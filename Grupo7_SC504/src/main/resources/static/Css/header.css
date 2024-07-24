@@ -1,0 +1,46 @@
+/* Header Styles */
+header {
+    background: #003d66; /* Example background color */
+    color: #ffffff;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    padding-left: 20px;
+}
+
+header .logo h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header nav {
+    margin-right: 20px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+header .user-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+header .user-logo img {
+    width: 24px; /* Adjust size as needed */
+    height: auto;
+    margin-right: 8px;
+}

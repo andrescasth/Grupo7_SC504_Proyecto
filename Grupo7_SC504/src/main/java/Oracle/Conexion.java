@@ -5,8 +5,10 @@
 package Oracle;
 
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
@@ -36,5 +38,11 @@ public class Conexion {
         
         return conexion;  
     }
+
+    public CallableStatement prepareCall(String sql) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    
     
 }

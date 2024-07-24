@@ -1,0 +1,51 @@
+/* Main section styles */
+main {
+    padding: 20px;
+}
+
+main section {
+    margin-bottom: 40px;
+}
+
+main h2 {
+    margin-bottom: 10px;
+    color: #35424a;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust spacing between products */
+}
+
+.product {
+    background: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: calc(33% - 20px); /* Adjust width as needed */
+    box-sizing: border-box;
+    flex: 1 1 calc(33% - 20px); /* Ensure products fit and wrap properly */
+}
+
+.product h3 {
+    margin-bottom: 10px;
+    color: #35424a;
+}
+
+.product p {
+    margin-bottom: 10px;
+}
+
+/* Ensure responsiveness */
+@media (max-width: 768px) {
+    .product {
+        width: calc(50% - 20px); /* Adjust for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        width: calc(100% - 20px); /* Adjust for very small screens */
+    }
+}

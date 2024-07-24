@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="Css/header.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Ferretería</title>
+    <link rel="stylesheet" href="Css/estilos.css">
+    
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Ferretería</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#products">Productos</a></li>
+                <li><a href="#about">Acerca de</a></li>
+                
+            </ul>
+        </nav>
+         <div class="card-header bg-success text-white">
+             <h2>Iniciar Sesion</h2><!-- comment -->
+        </div>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Bienvenidos a la Ferretería</h2>
+            <p>Encuentra todo lo que necesitas para tus proyectos de construcción y mejoras del hogar.</p>
+        </section>
+        <section id="products">
+            <h2>Nuestros Productos</h2>
+            <div class="product-list">
+                <div class="product">
+                    <h3>Producto 1</h3>
+                    <img src="pics/images.jpg" alt=""/>
+                    <p>Descripción del producto 1.</p>
+                    <p><strong>Precio:</strong> $10.00</p>
+                </div>
+                <div class="product">
+                    <h3>Producto 2</h3>
+                    <p>Descripción del producto 2.</p>
+                    <p><strong>Precio:</strong> $20.00</p>
+                </div>
+                <div class="product">
+                    <h3>Producto 3</h3>
+                    <p>Descripción del producto 3.</p>
+                    <p><strong>Precio:</strong> $15.00</p>
+                </div>
+            </div>
+        </section>
+        <section id="Cuenta">
+            <h2>Contacto</h2>
+            <form action="edita.html" method="post">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Ferretería. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+
