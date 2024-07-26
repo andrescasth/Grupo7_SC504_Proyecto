@@ -1,0 +1,68 @@
+/* Main section styles */
+main {
+    padding: 20px;
+    background-color: #f7f7f7; /* Suave color de fondo para el área principal */
+}
+
+main section {
+    margin-bottom: 40px;
+}
+
+main h2 {
+    margin-bottom: 10px;
+    color: #35424a;
+    font-size: 24px;
+    font-weight: 600;
+    border-bottom: 2px solid #35424a; /* Línea debajo del encabezado */
+    padding-bottom: 5px;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Ajustar el espacio entre los productos */
+}
+
+.product {
+    background: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Bordes redondeados más suaves */
+    width: calc(33% - 20px); /* Ajustar el ancho según sea necesario */
+    box-sizing: border-box;
+    flex: 1 1 calc(33% - 20px); /* Asegurar que los productos se ajusten y envuelvan correctamente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto de elevación */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves para la animación */
+}
+
+.product:hover {
+    transform: translateY(-10px); /* Efecto de elevación al pasar el ratón */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el ratón */
+}
+
+.product h3 {
+    margin-bottom: 10px;
+    color: #35424a;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.product p {
+    margin-bottom: 10px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Asegurar la capacidad de respuesta */
+@media (max-width: 768px) {
+    .product {
+        width: calc(50% - 20px); /* Ajustar para pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        width: calc(100% - 20px); /* Ajustar para pantallas muy pequeñas */
+    }
+}
+
