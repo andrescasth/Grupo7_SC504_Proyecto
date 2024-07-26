@@ -20,4 +20,9 @@ public class ProductoController {
     public String agregarProducto(@RequestBody Producto producto) {
         return productoService.agregarProducto(producto);
     }
+    
+    @DeleteMapping("/eliminar/{id}")
+    public String eliminarProducto(@PathVariable int id) {
+        return productoService.eliminarProducto(id);
+    }
 }

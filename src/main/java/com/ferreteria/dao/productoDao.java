@@ -45,5 +45,26 @@ public class productoDao {
         mensaje = "Error al agregar producto: " + e.getMessage();
     }
     return mensaje;
+    
+    
 }
+    public String eliminarProducto(int idProducto) {
+        String mensaje = "";
+        String sql = "{call GRUPO7.Eliminar_Producto_sp(?)}";
+
+        try (Connection con = jdbcTemplate.getDataSource().getConnection();
+             CallableStatement cstmt = con.prepareCall(sql)) {
+
+            // Establecer el parámetro de entrada
+            cstmt.setInt(1, idProducto);
+
+            // Ejecutar el procedimiento almacenado
+            cstmt.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            mensaje = "Error al eliminar producto: " + e.getMessage();
+        }
+        return mensaje;
+    }
 }

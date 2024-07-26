@@ -18,4 +18,8 @@ public class ProductoService {
     public String agregarProducto(Producto producto) {
         return productoDao.agregarProducto(producto);
     }
+    
+    public String eliminarProducto(int idProducto) {
+        return productoDao.eliminarProducto(idProducto);
+    }
 }
