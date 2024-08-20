@@ -1,49 +1,70 @@
 package com.ferreteria.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "categoria")
 public class Categoria {
-    private int ID_Categoria;
-    private String Nombre;
-    private String Descripcion;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categoria_seq")
+    @SequenceGenerator(name = "categoria_seq", sequenceName = "categoria_seq", allocationSize = 1)
+    @Column(name = "id_categoria")
+    private Long idCategoria;
+
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
+
+    @Column(name = "descripcion", nullable = false)
+    private String descripcion;
+
+   
+    
 
     public Categoria() {
     }
 
-    public Categoria(int ID_Categoria, String Nombre, String Descripcion) {
-        this.ID_Categoria = ID_Categoria;
-        this.Nombre = Nombre;
-        this.Descripcion = Descripcion;
+    public Categoria(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
     }
 
-    public int getID_Categoria() {
-        return ID_Categoria;
+    public Long getIdCategoria() {
+        return idCategoria;
     }
 
-    public void setID_Categoria(int ID_Categoria) {
-        this.ID_Categoria = ID_Categoria;
+    public void setIdCategoria(Long idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
-    public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @Override
     public String toString() {
         return "Categoria{" +
-                "ID_Categoria=" + ID_Categoria +
-                ", Nombre='" + Nombre + '\'' +
-                ", Descripcion='" + Descripcion + '\'' +
+                "idCategoria=" + idCategoria +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
                 '}';
     }
 }

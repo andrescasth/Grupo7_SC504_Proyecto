@@ -22,4 +22,8 @@ public class CategoriaService {
     public String eliminarCategoria(int id) {
         return categoriaDao.eliminarCategoria(id);
     }
+
+    public String actualizarCategoria(Categoria categoria) {
+        return categoriaDao.actualizarCategoria(categoria);
+    }
 }

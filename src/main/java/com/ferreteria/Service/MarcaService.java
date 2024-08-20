@@ -1,7 +1,7 @@
 package com.ferreteria.service;
 
-import com.ferreteria.dao.MarcaDao;
 import com.ferreteria.domain.Marca;
+import com.ferreteria.dao.MarcaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +21,9 @@ public class MarcaService {
 
     public String eliminarMarca(int id) {
         return marcaDao.eliminarMarca(id);
+    }
+
+    public String actualizarMarca(Marca marca) {
+        return marcaDao.actualizarMarca(marca);
     }
 }

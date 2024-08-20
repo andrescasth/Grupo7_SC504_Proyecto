@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/clientes")
@@ -22,19 +21,15 @@ public class ClienteController {
     }
 
     @GetMapping("/form")
-    public String mostrarFormulario() {
-        // Devuelve la vista del formulario
+    public String mostrarFormulario(Model model) {
+        model.addAttribute("cliente", new Cliente());
         return "clientes"; // Nombre del archivo clientes.html
     }
 
     @PostMapping("/agregar")
-    public ModelAndView agregarCliente(String name, String direccion, String telefono, String email, String estado) {
-        Cliente cliente = new Cliente(name, direccion, telefono, email, estado);
+    public String agregarCliente(Cliente cliente, Model model) {
         String resultado = clienteService.agregarCliente(cliente);
-        
-        // Enviar el resultado a la vista
-        ModelAndView modelAndView = new ModelAndView("resultado"); // Asegúrate de tener esta vista
-        modelAndView.addObject("resultado", resultado);
-        return modelAndView;
+        model.addAttribute("resultado", resultado);
+        return "resultado"; // Nombre del archivo resultado.html para mostrar el resultado
     }
 }

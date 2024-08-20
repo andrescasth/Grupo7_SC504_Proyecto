@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertar Categoría</title>
+    <link rel="stylesheet" href="../Css/estilos.css"> <!-- Ajustar el path si es necesario -->
+</head>
+<body>
+    <header>
+        <h1>Insertar Categoría</h1>
+    </header>
+    <main>
+        <form action="/categorias/agregar" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea>
+            
+            <button type="submit">Insertar</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Ferretería. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

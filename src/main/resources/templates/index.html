@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="/Css/estilos.css">
+    <link rel="stylesheet" href="Css/header.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda Ferretería</title>
+    <link rel="stylesheet" href="Css/estilos.css">
 </head>
 <body>
     <header>
@@ -16,9 +17,14 @@
                 <li><a href="#home">Inicio</a></li>
                 <li><a href="#products">Productos</a></li>
                 <li><a href="#about">Acerca de</a></li>
-                <li><a href="/clientes/form">Clientes</a></li> <!-- Enlace al formulario de clientes -->
+                <li><a href="/clientes/form">Clientes</a></li>
+                <li><a href="/categorias/form">Categorías</a></li> <!-- Enlace al formulario de categorías -->
+                <li><a href="/marcas/form">Marcas</a></li>
             </ul>
         </nav>
+        <div class="cart-button">
+            <a href="/carrito">Ver Carrito</a>
+        </div>
         <div class="card-header bg-success text-white">
             <h2>Iniciar Sesión</h2>
         </div>
@@ -33,24 +39,33 @@
             <div class="product-list">
                 <div class="product">
                     <h3>Producto 1</h3>
-                    <img src="/pics/images.jpg" alt=""/>
+                    <img src="pics/images.jpg" alt=""/>
                     <p>Descripción del producto 1.</p>
                     <p><strong>Precio:</strong> $10.00</p>
+                    <form action="/carrito/agregar" method="post">
+                        <input type="hidden" name="productoId" value="1">
+                        <button type="submit">Agregar al Carrito</button>
+                    </form>
                 </div>
                 <div class="product">
                     <h3>Producto 2</h3>
                     <p>Descripción del producto 2.</p>
                     <p><strong>Precio:</strong> $20.00</p>
+                    <form action="/carrito/agregar" method="post">
+                        <input type="hidden" name="productoId" value="2">
+                        <button type="submit">Agregar al Carrito</button>
+                    </form>
                 </div>
                 <div class="product">
                     <h3>Producto 3</h3>
                     <p>Descripción del producto 3.</p>
                     <p><strong>Precio:</strong> $15.00</p>
+                    <form action="/carrito/agregar" method="post">
+                        <input type="hidden" name="productoId" value="3">
+                        <button type="submit">Agregar al Carrito</button>
+                    </form>
                 </div>
             </div>
-        </section>
-        <section id="contact">
-            <h2>Contacto</h2>
         </section>
     </main>
     <footer>

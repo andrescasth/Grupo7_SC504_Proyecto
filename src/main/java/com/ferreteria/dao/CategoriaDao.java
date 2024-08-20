@@ -22,14 +22,13 @@ public class CategoriaDao {
 
     public String agregarCategoria(Categoria categoria) {
         String mensaje = "";
-        String sql = "{call GRUPO7.Crear_Categoria_SP(?, ?, ?)}";
+        String sql = "{call GRUPO7.Insertar_Categoria_sp(?, ?)}"; // Cambiado a PROYECTO
 
         try (Connection con = jdbcTemplate.getDataSource().getConnection();
              CallableStatement cstmt = con.prepareCall(sql)) {
 
-            cstmt.setInt(1, categoria.getID_Categoria());
-            cstmt.setString(2, categoria.getNombre());
-            cstmt.setString(3, categoria.getDescripcion());
+            cstmt.setString(1, categoria.getNombre());
+            cstmt.setString(2, categoria.getDescripcion());
 
             cstmt.execute();
 
@@ -42,7 +41,7 @@ public class CategoriaDao {
 
     public String eliminarCategoria(int id) {
         String mensaje = "";
-        String sql = "{call GRUPO7.Eliminar_Categoria_sp(?)}";
+        String sql = "{call GRUPO7.Eliminar_Categoria_sp(?)}"; // Cambiado a PROYECTO
 
         try (Connection con = jdbcTemplate.getDataSource().getConnection();
              CallableStatement cstmt = con.prepareCall(sql)) {
@@ -54,6 +53,26 @@ public class CategoriaDao {
         } catch (SQLException e) {
             e.printStackTrace();
             mensaje = "Error al eliminar categoría: " + e.getMessage();
+        }
+        return mensaje;
+    }
+
+    public String actualizarCategoria(Categoria categoria) {
+        String mensaje = "";
+        String sql = "{call GRUPO7.Actualizar_Categoria_sp(?, ?, ?)}"; // Cambiado a PROYECTO
+
+        try (Connection con = jdbcTemplate.getDataSource().getConnection();
+             CallableStatement cstmt = con.prepareCall(sql)) {
+
+            cstmt.setLong(1, categoria.getIdCategoria());
+            cstmt.setString(2, categoria.getNombre());
+            cstmt.setString(3, categoria.getDescripcion());
+
+            cstmt.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            mensaje = "Error al actualizar categoría: " + e.getMessage();
         }
         return mensaje;
     }

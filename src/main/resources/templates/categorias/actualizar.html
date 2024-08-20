@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Categoría</title>
+    <link rel="stylesheet" href="../Css/estilos.css"> <!-- Ajustar el path si es necesario -->
+</head>
+<body>
+    <header>
+        <h1>Actualizar Categoría</h1>
+    </header>
+    <main>
+        <form action="/categorias/actualizar" method="post">
+            <label for="id">ID de Categoría:</label>
+            <input type="text" id="id" name="id" required>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+            
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion"></textarea>
+            
+            <button type="submit">Actualizar</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Ferretería. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
