@@ -1,4 +1,58 @@
-/* Main section styles */
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(90deg, #003d66, #005b99);
+    color: #ffffff;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    padding-left: 20px;
+}
+
+header .logo h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+header nav {
+    margin-right: 20px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #ffcc00;
+}
+
+/* Main Section Styles */
 main {
     padding: 20px;
     background-color: #f7f7f7; /* Suave color de fondo para el área principal */
@@ -17,6 +71,7 @@ main h2 {
     padding-bottom: 5px;
 }
 
+/* Product List Styles */
 .product-list {
     display: flex;
     flex-wrap: wrap;
@@ -53,7 +108,7 @@ main h2 {
     line-height: 1.6;
 }
 
-/* Asegurar la capacidad de respuesta */
+/* Responsive Styles */
 @media (max-width: 768px) {
     .product {
         width: calc(50% - 20px); /* Ajustar para pantallas más pequeñas */
@@ -66,11 +121,11 @@ main h2 {
     }
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+/* Footer Styles */
+footer {
+    background-color: #003d66;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    position: relative;
 }
-
-

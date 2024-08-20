@@ -22,18 +22,17 @@ public class ClienteDao {
 
     public String agregarCliente(Cliente cliente) {
         String mensaje = "";
-        String sql = "{call Crear_Cliente_SP(?, ?, ?, ?, ?, ?)}";
+        String sql = "{call Insertar_Cliente_sp(?, ?, ?, ?, ?)}";
 
         try (Connection con = jdbcTemplate.getDataSource().getConnection();
              CallableStatement cstmt = con.prepareCall(sql)) {
 
             // Establecer los parámetros de entrada
-            cstmt.setInt(1, cliente.getID_Cliente());
-            cstmt.setString(2, cliente.getNombre());
-            cstmt.setString(3, cliente.getDireccion());
-            cstmt.setString(4, cliente.getTelefono());
-            cstmt.setString(5, cliente.getCorreo());
-            cstmt.setString(6, cliente.getEstado());
+            cstmt.setString(1, cliente.getNombre());
+            cstmt.setString(2, cliente.getDireccion());
+            cstmt.setString(3, cliente.getTelefono());
+            cstmt.setString(4, cliente.getCorreo());
+            cstmt.setString(5, cliente.getEstado());
 
             // Ejecutar el procedimiento almacenado
             cstmt.execute();

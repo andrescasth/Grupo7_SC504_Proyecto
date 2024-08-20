@@ -22,4 +22,5 @@ public class ClienteService {
     public String eliminarCliente(int id) {
         return clienteDao.eliminarCliente(id);
     }
+    
 }

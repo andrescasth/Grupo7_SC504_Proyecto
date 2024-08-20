@@ -1,82 +1,108 @@
 package com.ferreteria.domain;
 
-public class Cliente {
-    private int ID_Cliente;
-    private String Nombre;
-    private String Direccion;
-    private String Telefono;
-    private String Correo;
-    private String Estado;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
+
+@Entity
+@Table(name = "cliente")
+public class Cliente {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cliente_seq")
+    @SequenceGenerator(name = "cliente_seq", sequenceName = "cliente_seq", allocationSize = 1)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
+
+    @Column(name = "direccion", nullable = false)
+    private String direccion;
+
+    @Column(name = "telefono", nullable = false)
+    private String telefono;
+
+    @Column(name = "correo", nullable = false)
+    private String correo;
+
+    @Column(name = "estado", nullable = false)
+    private String estado;
     public Cliente() {
     }
 
-    public Cliente(int ID_Cliente, String Nombre, String Direccion, String Telefono, String Correo, String Estado) {
-        this.ID_Cliente = ID_Cliente;
-        this.Nombre = Nombre;
-        this.Direccion = Direccion;
-        this.Telefono = Telefono;
-        this.Correo = Correo;
-        this.Estado = Estado;
+    public Cliente(String nombre, String direccion, String telefono, String correo, String estado) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.estado = estado;
     }
 
-    public int getID_Cliente() {
-        return ID_Cliente;
+    // Getters y Setters
+
+    public Long getId() {
+        return id;
     }
 
-    public void setID_Cliente(int ID_Cliente) {
-        this.ID_Cliente = ID_Cliente;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDireccion() {
-        return Direccion;
+        return direccion;
     }
 
-    public void setDireccion(String Direccion) {
-        this.Direccion = Direccion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getTelefono() {
-        return Telefono;
+        return telefono;
     }
 
-    public void setTelefono(String Telefono) {
-        this.Telefono = Telefono;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getCorreo() {
-        return Correo;
+        return correo;
     }
 
-    public void setCorreo(String Correo) {
-        this.Correo = Correo;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getEstado() {
-        return Estado;
+        return estado;
     }
 
-    public void setEstado(String Estado) {
-        this.Estado = Estado;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
         return "Cliente{" +
-                "ID_Cliente=" + ID_Cliente +
-                ", Nombre='" + Nombre + '\'' +
-                ", Direccion='" + Direccion + '\'' +
-                ", Telefono='" + Telefono + '\'' +
-                ", Correo='" + Correo + '\'' +
-                ", Estado='" + Estado + '\'' +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", correo='" + correo + '\'' +
+                ", estado='" + estado + '\'' +
                 '}';
     }
 }

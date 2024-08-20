@@ -36,8 +36,12 @@ import com.ferreteria.service.PuestoService;
 import com.ferreteria.service.SucursalService;
 import com.ferreteria.service.VentaService;
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.SQLException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 
 //NOTA: CAMBIAR LOS ELIMINAR POR GETPRODUCTOID
@@ -46,13 +50,65 @@ import org.springframework.context.annotation.Bean;
 public class FerreteriaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FerreteriaApplication.class, args);
-                
-               
-	}
+        SpringApplication.run(FerreteriaApplication.class, args);
+        }
+/*
+        // Verificar la conexión a la base de datos
+        if (checkDatabaseConnection()) {
+            System.out.println("La conexión a la base de datos fue exitosa.");
+        } else {
+            System.out.println("Error al conectar a la base de datos.");
+        }
+    }
+
+    private static boolean checkDatabaseConnection() {
+        Connection connection = null;
+        try {
+            connection = Conexion.getConnection();
+            if (connection != null && !connection.isClosed()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
         
+    public static void main(String[] args) {
+        SpringApplication.run(FerreteriaApplication.class, args);
+    }
+}
+
+@Component
+class DataInitializer implements CommandLineRunner {
+
+    private final ClienteService clienteService;
+
+    @Autowired
+    public DataInitializer(ClienteService clienteService) {
+        this.clienteService = clienteService;
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        // Crear un nuevo cliente
+        Cliente cliente = new Cliente("Juan Pérez", "Av. Principal 123", "555-1234", "juan.perez@example.com", "Activo");
+
+        // Agregar el cliente
+        String resultado = clienteService.agregarCliente(cliente);
+
+        // Mostrar el resultado
+        System.out.println("Resultado al agregar cliente: " + resultado);
+    }
         
-        /*
          @Bean
     public CommandLineRunner demo(ProductoService productoService) {
         return (args) -> {
@@ -69,26 +125,26 @@ public class FerreteriaApplication {
             String mensajeEliminar = productoService.eliminarProducto(1);
             System.out.println(mensajeEliminar);
         };   
-    }*/
+    }
     
      @Bean
     public CommandLineRunner demo(ClienteService clienteService) {
         return (args) -> {
-            /*
+            
             // Crea un cliente para agregar
-            Cliente cliente = new Cliente(6, "Juan Pérez", "Calle 123", "555-1234", "juan@example.com", "Activo");
+            Cliente cliente = new Cliente( "Juan Pérez", "Calle 123", "555-1234", "juan@example.com", "Activo");
             
             // Llama al método para agregar el cliente
             String mensajeAgregar = clienteService.agregarCliente(cliente);
-            System.out.println(mensajeAgregar);*/
-
+            System.out.println(mensajeAgregar);
+/*
             // Llama al método para eliminar el cliente con ID 1
             String mensajeEliminar = clienteService.eliminarCliente(6);
             System.out.println(mensajeEliminar);
         };
     }
    
-        /*
+        
         @Bean
     public CommandLineRunner demo(MotivoService motivoService) {
         return (args) -> {
