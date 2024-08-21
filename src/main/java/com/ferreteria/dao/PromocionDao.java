@@ -22,18 +22,15 @@ public class PromocionDao {
 
     public String agregarPromocion(Promocion promocion) {
         String mensaje = "";
-        String sql = "{call GRUPO7.Crear_Promocion_SP(?, ?, ?, ?)}";
+        String sql = "{call GRUPO7.Insertar_Promocion_sp(?, ?, ?)}";
 
         try (Connection con = jdbcTemplate.getDataSource().getConnection();
              CallableStatement cstmt = con.prepareCall(sql)) {
 
-            // Establecer los parámetros de entrada
-            cstmt.setInt(1, promocion.getID_Promocion());
-            cstmt.setDouble(2, promocion.getPorcentaje());
-            cstmt.setString(3, promocion.getDescripcion());
-            cstmt.setString(4, promocion.getEstado());
+            cstmt.setDouble(1, promocion.getPorcentaje());
+            cstmt.setString(2, promocion.getDescripcion());
+            cstmt.setString(3, promocion.getEstado());
 
-            // Ejecutar el procedimiento almacenado
             cstmt.execute();
 
         } catch (SQLException e) {
@@ -43,22 +40,41 @@ public class PromocionDao {
         return mensaje;
     }
 
-    public String eliminarPromocion(int id) {
+    public String eliminarPromocion(Long id) {
         String mensaje = "";
         String sql = "{call GRUPO7.Eliminar_Promocion_sp(?)}";
 
         try (Connection con = jdbcTemplate.getDataSource().getConnection();
              CallableStatement cstmt = con.prepareCall(sql)) {
 
-            // Establecer los parámetros de entrada
-            cstmt.setInt(1, id);
+            cstmt.setLong(1, id);
 
-            // Ejecutar el procedimiento almacenado
             cstmt.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
             mensaje = "Error al eliminar promoción: " + e.getMessage();
+        }
+        return mensaje;
+    }
+
+    public String actualizarPromocion(Promocion promocion) {
+        String mensaje = "";
+        String sql = "{call GRUPO7.Actualizar_Promocion_sp(?, ?, ?, ?)}";
+
+        try (Connection con = jdbcTemplate.getDataSource().getConnection();
+             CallableStatement cstmt = con.prepareCall(sql)) {
+
+            cstmt.setLong(1, promocion.getIdPromocion());
+            cstmt.setDouble(2, promocion.getPorcentaje());
+            cstmt.setString(3, promocion.getDescripcion());
+            cstmt.setString(4, promocion.getEstado());
+
+            cstmt.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            mensaje = "Error al actualizar promoción: " + e.getMessage();
         }
         return mensaje;
     }

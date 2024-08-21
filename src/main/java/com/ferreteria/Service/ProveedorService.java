@@ -1,7 +1,7 @@
 package com.ferreteria.service;
 
-import com.ferreteria.dao.ProveedorDao;
 import com.ferreteria.domain.Proveedor;
+import com.ferreteria.dao.ProveedorDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +21,9 @@ public class ProveedorService {
 
     public String eliminarProveedor(int id) {
         return proveedorDao.eliminarProveedor(id);
+    }
+
+    public String actualizarProveedor(Proveedor proveedor) {
+        return proveedorDao.actualizarProveedor(proveedor);
     }
 }

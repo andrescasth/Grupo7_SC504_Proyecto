@@ -19,7 +19,11 @@ public class MotivoService {
         return motivoDao.agregarMotivo(motivo);
     }
 
-    public String eliminarMotivo(int id) {
+    public String eliminarMotivo(Long id) {
         return motivoDao.eliminarMotivo(id);
+    }
+
+    public String actualizarMotivo(Motivo motivo) {
+        return motivoDao.actualizarMotivo(motivo);
     }
 }

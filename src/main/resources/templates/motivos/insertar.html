@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertar Motivo</title>
+    <link rel="stylesheet" href="/Css/estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Insertar Motivo</h1>
+    </header>
+    <main>
+        <form action="/motivos/insertar" method="post">
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" name="descripcion" required>
+            
+            <label for="accion">Acción:</label>
+            <input type="text" id="accion" name="accion" required>
+            
+            <button type="submit">Insertar</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Ferretería. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

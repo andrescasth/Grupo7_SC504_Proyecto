@@ -1,7 +1,7 @@
 package com.ferreteria.service;
 
-import com.ferreteria.dao.PuestoDao;
 import com.ferreteria.domain.Puesto;
+import com.ferreteria.dao.PuestoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +22,8 @@ public class PuestoService {
     public String eliminarPuesto(int id) {
         return puestoDao.eliminarPuesto(id);
     }
-}
 
+    public String actualizarPuesto(Puesto puesto) {
+        return puestoDao.actualizarPuesto(puesto);
+    }
+}

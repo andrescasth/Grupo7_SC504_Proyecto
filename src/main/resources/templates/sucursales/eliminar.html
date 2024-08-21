@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Sucursal</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Incluye tu CSS aquí -->
+</head>
+<body>
+    <h1>Eliminar Sucursal</h1>
+    <form action="/sucursales/eliminar" method="post">
+        <label for="id">ID de la Sucursal:</label>
+        <input type="number" id="id" name="id" required>
+        <br>
+        <button type="submit">Eliminar Sucursal</button>
+    </form>
+    <a href="/sucursales/form">Volver a la Página Principal</a>
+</body>
+</html>

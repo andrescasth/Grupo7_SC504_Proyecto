@@ -1,71 +1,97 @@
 package com.ferreteria.domain;
 
-public class Sucursal {
-    private int ID_Sucursal;
-    private String Nombre;
-    private String Direccion;
-    private String Telefono;
-    private String Estado;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "sucursal")
+public class Sucursal {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sucursal_seq")
+    @SequenceGenerator(name = "sucursal_seq", sequenceName = "sucursal_seq", allocationSize = 1)
+    @Column(name = "id_sucursal")
+    private Long idSucursal;
+
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
+
+    @Column(name = "direccion", nullable = false)
+    private String direccion;
+
+    @Column(name = "telefono", nullable = false)
+    private String telefono;
+
+    @Column(name = "estado", nullable = false)
+    private String estado;
+
+    // Constructor vacío
     public Sucursal() {
     }
 
-    public Sucursal(int ID_Sucursal, String Nombre, String Direccion, String Telefono, String Estado) {
-        this.ID_Sucursal = ID_Sucursal;
-        this.Nombre = Nombre;
-        this.Direccion = Direccion;
-        this.Telefono = Telefono;
-        this.Estado = Estado;
+    // Constructor con parámetros
+    public Sucursal(String nombre, String direccion, String telefono, String estado) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.estado = estado;
     }
 
-    public int getID_Sucursal() {
-        return ID_Sucursal;
+    // Getters y Setters
+    public Long getIdSucursal() {
+        return idSucursal;
     }
 
-    public void setID_Sucursal(int ID_Sucursal) {
-        this.ID_Sucursal = ID_Sucursal;
+    public void setIdSucursal(Long idSucursal) {
+        this.idSucursal = idSucursal;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDireccion() {
-        return Direccion;
+        return direccion;
     }
 
-    public void setDireccion(String Direccion) {
-        this.Direccion = Direccion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getTelefono() {
-        return Telefono;
+        return telefono;
     }
 
-    public void setTelefono(String Telefono) {
-        this.Telefono = Telefono;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getEstado() {
-        return Estado;
+        return estado;
     }
 
-    public void setEstado(String Estado) {
-        this.Estado = Estado;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
         return "Sucursal{" +
-                "ID_Sucursal=" + ID_Sucursal +
-                ", Nombre='" + Nombre + '\'' +
-                ", Direccion='" + Direccion + '\'' +
-                ", Telefono='" + Telefono + '\'' +
-                ", Estado='" + Estado + '\'' +
+                "idSucursal=" + idSucursal +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", estado='" + estado + '\'' +
                 '}';
     }
 }

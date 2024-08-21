@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertar Sucursal</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Incluye tu CSS aquí -->
+</head>
+<body>
+    <h1>Insertar Nueva Sucursal</h1>
+    <form action="/sucursales/agregar" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br>
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required>
+        <br>
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" required>
+        <br>
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" name="estado" required>
+        <br>
+        <button type="submit">Insertar Sucursal</button>
+    </form>
+    <a href="/sucursales/form">Volver a la Página Principal</a>
+</body>
+</html>

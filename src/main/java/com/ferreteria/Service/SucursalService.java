@@ -1,5 +1,6 @@
 package com.ferreteria.service;
 
+
 import com.ferreteria.dao.SucursalDao;
 import com.ferreteria.domain.Sucursal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,15 @@ public class SucursalService {
         this.sucursalDao = sucursalDao;
     }
 
-    public String agregarSucursal(Sucursal sucursal) {
-        return sucursalDao.agregarSucursal(sucursal);
+    public String insertarSucursal(Sucursal sucursal) {
+        return sucursalDao.insertarSucursal(sucursal);
     }
 
-    public String eliminarSucursal(int id) {
-        return sucursalDao.eliminarSucursal(id);
+    public String eliminarSucursal(Long idSucursal) {
+        return sucursalDao.eliminarSucursal(idSucursal);
+    }
+
+    public String actualizarSucursal(Sucursal sucursal) {
+        return sucursalDao.actualizarSucursal(sucursal);
     }
 }

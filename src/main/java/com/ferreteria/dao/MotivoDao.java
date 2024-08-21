@@ -22,14 +22,13 @@ public class MotivoDao {
 
     public String agregarMotivo(Motivo motivo) {
         String mensaje = "";
-        String sql = "{call GRUPO7.Crear_Motivo_SP(?, ?)}";
+        String sql = "{call GRUPO7.Crear_Motivo_SP(?)}";
 
         try (Connection con = jdbcTemplate.getDataSource().getConnection();
              CallableStatement cstmt = con.prepareCall(sql)) {
 
             // Establecer los parámetros de entrada
-            cstmt.setInt(1, motivo.getID_Motivo());
-            cstmt.setString(2, motivo.getDescripcion());
+            cstmt.setString(1, motivo.getDescripcion()); // ID generado automáticamente
 
             // Ejecutar el procedimiento almacenado
             cstmt.execute();
@@ -41,7 +40,7 @@ public class MotivoDao {
         return mensaje;
     }
 
-    public String eliminarMotivo(int id) {
+    public String eliminarMotivo(Long id) {
         String mensaje = "";
         String sql = "{call GRUPO7.Eliminar_Motivo_sp(?)}";
 
@@ -49,7 +48,7 @@ public class MotivoDao {
              CallableStatement cstmt = con.prepareCall(sql)) {
 
             // Establecer los parámetros de entrada
-            cstmt.setInt(1, id);
+            cstmt.setLong(1, id);
 
             // Ejecutar el procedimiento almacenado
             cstmt.execute();
@@ -57,6 +56,27 @@ public class MotivoDao {
         } catch (SQLException e) {
             e.printStackTrace();
             mensaje = "Error al eliminar motivo: " + e.getMessage();
+        }
+        return mensaje;
+    }
+
+    public String actualizarMotivo(Motivo motivo) {
+        String mensaje = "";
+        String sql = "{call GRUPO7.Actualizar_Motivo_SP(?, ?)}";
+
+        try (Connection con = jdbcTemplate.getDataSource().getConnection();
+             CallableStatement cstmt = con.prepareCall(sql)) {
+
+            // Establecer los parámetros de entrada
+            cstmt.setLong(1, motivo.getID_Motivo());
+            cstmt.setString(2, motivo.getDescripcion());
+
+            // Ejecutar el procedimiento almacenado
+            cstmt.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            mensaje = "Error al actualizar motivo: " + e.getMessage();
         }
         return mensaje;
     }

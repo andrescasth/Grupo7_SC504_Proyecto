@@ -1,25 +1,35 @@
 package com.ferreteria.service;
 
-import com.ferreteria.dao.MetodoPagoDao;
+import com.ferreteria.dao.MetodoPagoDAO;
 import com.ferreteria.domain.MetodoPago;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MetodoPagoService {
 
-    private final MetodoPagoDao metodoPagoDao;
+    private final MetodoPagoDAO metodoPagoDAO;
 
     @Autowired
-    public MetodoPagoService(MetodoPagoDao metodoPagoDao) {
-        this.metodoPagoDao = metodoPagoDao;
+    public MetodoPagoService(MetodoPagoDAO metodoPagoDAO) {
+        this.metodoPagoDAO = metodoPagoDAO;
     }
 
     public String agregarMetodoPago(MetodoPago metodoPago) {
-        return metodoPagoDao.agregarMetodoPago(metodoPago);
+        return metodoPagoDAO.agregarMetodoPago(metodoPago);
     }
 
-    public String eliminarMetodoPago(int id) {
-        return metodoPagoDao.eliminarMetodoPago(id);
+    public String eliminarMetodoPago(Long id) {
+        return metodoPagoDAO.eliminarMetodoPago(id);
+    }
+
+    public String actualizarMetodoPago(MetodoPago metodoPago) {
+        return metodoPagoDAO.actualizarMetodoPago(metodoPago);
+    }
+
+    public List<MetodoPago> obtenerMetodosPago() {
+        return metodoPagoDAO.obtenerMetodosPago();
     }
 }

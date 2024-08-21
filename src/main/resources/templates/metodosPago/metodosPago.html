@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos de Pago</title>
+    <link rel="stylesheet" href="/Css/estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Métodos de Pago</h1>
+    </header>
+    <main>
+        <h2>Opciones</h2>
+        <a href="/metodosPago/insertar">Insertar Método de Pago</a>
+        <a href="/metodosPago/eliminar">Eliminar Método de Pago</a>
+        <a href="/metodosPago/actualizar">Actualizar Método de Pago</a>
+
+        
+        
+        <h2>Métodos de Pago Disponibles</h2>
+        <form action="#" method="post">
+            <label for="metodoPago">Selecciona un método de pago:</label>
+            <select id="metodoPago" name="metodoPago">
+                <c:forEach items="${metodosPago}" var="metodo">
+                    <option value="${metodo.idMetodoPago}">${metodo.descripcion} - ${metodo.tipo}</option>
+                </c:forEach>
+            </select>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Ferretería. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

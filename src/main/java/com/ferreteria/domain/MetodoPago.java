@@ -1,60 +1,73 @@
 package com.ferreteria.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Metodo_Pago")
 public class MetodoPago {
-    private int ID_Metodo_Pago;
-    private String Tipo;
-    private String Descripcion;
-    private String Estado;
 
-    public MetodoPago() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "metodo_pago_seq")
+    @SequenceGenerator(name = "metodo_pago_seq", sequenceName = "metodo_pago_seq", allocationSize = 1)
+    @Column(name = "ID_Metodo_Pago")
+    private Long idMetodoPago;
+
+    @Column(name = "Tipo", nullable = false)
+    private String tipo;
+
+    @Column(name = "Descripcion", nullable = false)
+    private String descripcion;
+
+    @Column(name = "Estado", nullable = false)
+    private String estado;
+
+    // Getters and Setters
+
+    public Long getIdMetodoPago() {
+        return idMetodoPago;
     }
 
-    public MetodoPago(int ID_Metodo_Pago, String Tipo, String Descripcion, String Estado) {
-        this.ID_Metodo_Pago = ID_Metodo_Pago;
-        this.Tipo = Tipo;
-        this.Descripcion = Descripcion;
-        this.Estado = Estado;
-    }
-
-    public int getID_Metodo_Pago() {
-        return ID_Metodo_Pago;
-    }
-
-    public void setID_Metodo_Pago(int ID_Metodo_Pago) {
-        this.ID_Metodo_Pago = ID_Metodo_Pago;
+    public void setIdMetodoPago(Long idMetodoPago) {
+        this.idMetodoPago = idMetodoPago;
     }
 
     public String getTipo() {
-        return Tipo;
+        return tipo;
     }
 
-    public void setTipo(String Tipo) {
-        this.Tipo = Tipo;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
-    public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getEstado() {
-        return Estado;
+        return estado;
     }
 
-    public void setEstado(String Estado) {
-        this.Estado = Estado;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
         return "MetodoPago{" +
-                "ID_Metodo_Pago=" + ID_Metodo_Pago +
-                ", Tipo='" + Tipo + '\'' +
-                ", Descripcion='" + Descripcion + '\'' +
-                ", Estado='" + Estado + '\'' +
+                "idMetodoPago=" + idMetodoPago +
+                ", tipo='" + tipo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", estado='" + estado + '\'' +
                 '}';
     }
 }

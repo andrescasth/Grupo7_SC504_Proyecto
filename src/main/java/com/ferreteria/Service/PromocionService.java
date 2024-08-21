@@ -19,7 +19,11 @@ public class PromocionService {
         return promocionDao.agregarPromocion(promocion);
     }
 
-    public String eliminarPromocion(int id) {
+    public String eliminarPromocion(Long id) {
         return promocionDao.eliminarPromocion(id);
+    }
+
+    public String actualizarPromocion(Promocion promocion) {
+        return promocionDao.actualizarPromocion(promocion);
     }
 }

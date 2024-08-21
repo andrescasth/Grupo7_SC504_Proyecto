@@ -1,60 +1,90 @@
 package com.ferreteria.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import java.util.Date;
+
+@Entity
+@Table(name = "Promocion")
 public class Promocion {
-    private int ID_Promocion;
-    private int Porcentaje;
-    private String Descripcion;
-    private String Estado;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "promocion_seq")
+    @SequenceGenerator(name = "promocion_seq", sequenceName = "promocion_seq", allocationSize = 1)
+    @Column(name = "ID_Promocion")
+    private Long idPromocion;
+
+    @Column(name = "Porcentaje", nullable = false)
+    private Double porcentaje;
+
+    @Column(name = "Descripcion", nullable = false)
+    private String descripcion;
+
+    @Column(name = "Estado", nullable = false)
+    private String estado;
+
+   
 
     public Promocion() {
     }
 
-    public Promocion(int ID_Promocion, int Porcentaje, String Descripcion, String Estado) {
-        this.ID_Promocion = ID_Promocion;
-        this.Porcentaje = Porcentaje;
-        this.Descripcion = Descripcion;
-        this.Estado = Estado;
+    public Promocion(Double porcentaje, String descripcion, String estado) {
+        this.porcentaje = porcentaje;
+        this.descripcion = descripcion;
+        this.estado = estado;
+    }
+    
+     public Promocion(Long idPromocion, Double porcentaje, String descripcion, String estado) {
+        this.idPromocion = idPromocion;
+        this.porcentaje = porcentaje;
+        this.descripcion = descripcion;
+        this.estado = estado;
     }
 
-    public int getID_Promocion() {
-        return ID_Promocion;
+    public Long getIdPromocion() {
+        return idPromocion;
     }
 
-    public void setID_Promocion(int ID_Promocion) {
-        this.ID_Promocion = ID_Promocion;
+    public void setIdPromocion(Long idPromocion) {
+        this.idPromocion = idPromocion;
     }
 
-    public double getPorcentaje() {
-        return Porcentaje;
+    public Double getPorcentaje() {
+        return porcentaje;
     }
 
-    public void setPorcentaje(int Porcentaje) {
-        this.Porcentaje = Porcentaje;
+    public void setPorcentaje(Double porcentaje) {
+        this.porcentaje = porcentaje;
     }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
-    public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getEstado() {
-        return Estado;
+        return estado;
     }
 
-    public void setEstado(String Estado) {
-        this.Estado = Estado;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
         return "Promocion{" +
-                "ID_Promocion=" + ID_Promocion +
-                ", Porcentaje=" + Porcentaje +
-                ", Descripcion='" + Descripcion + '\'' +
-                ", Estado='" + Estado + '\'' +
+                "idPromocion=" + idPromocion +
+                ", porcentaje=" + porcentaje +
+                ", descripcion='" + descripcion + '\'' +
+                ", estado='" + estado + '\'' +
                 '}';
     }
 }

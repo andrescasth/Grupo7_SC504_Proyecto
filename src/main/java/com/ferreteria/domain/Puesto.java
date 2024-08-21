@@ -1,60 +1,80 @@
 package com.ferreteria.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "puesto")
 public class Puesto {
-    private int ID_Puesto;
-    private String Nombre;
-    private double Salario;
-    private String Estado;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "puesto_seq")
+    @SequenceGenerator(name = "puesto_seq", sequenceName = "puesto_seq", allocationSize = 1)
+    @Column(name = "id_puesto")
+    private Long idPuesto;
+
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
+
+    @Column(name = "salario", nullable = false)
+    private Double salario;
+
+    @Column(name = "estado", nullable = false)
+    private String estado;
 
     public Puesto() {
     }
 
-    public Puesto(int ID_Puesto, String Nombre, double Salario, String Estado) {
-        this.ID_Puesto = ID_Puesto;
-        this.Nombre = Nombre;
-        this.Salario = Salario;
-        this.Estado = Estado;
+    public Puesto(String nombre, Double salario, String estado) {
+        this.nombre = nombre;
+        this.salario = salario;
+        this.estado = estado;
     }
 
-    public int getID_Puesto() {
-        return ID_Puesto;
+    public Long getIdPuesto() {
+        return idPuesto;
     }
 
-    public void setID_Puesto(int ID_Puesto) {
-        this.ID_Puesto = ID_Puesto;
+    public void setIdPuesto(Long idPuesto) {
+        this.idPuesto = idPuesto;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public double getSalario() {
-        return Salario;
+    public Double getSalario() {
+        return salario;
     }
 
-    public void setSalario(double Salario) {
-        this.Salario = Salario;
+    public void setSalario(Double salario) {
+        this.salario = salario;
     }
 
     public String getEstado() {
-        return Estado;
+        return estado;
     }
 
-    public void setEstado(String Estado) {
-        this.Estado = Estado;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
         return "Puesto{" +
-                "ID_Puesto=" + ID_Puesto +
-                ", Nombre='" + Nombre + '\'' +
-                ", Salario=" + Salario +
-                ", Estado='" + Estado + '\'' +
+                "idPuesto=" + idPuesto +
+                ", nombre='" + nombre + '\'' +
+                ", salario=" + salario +
+                ", estado='" + estado + '\'' +
                 '}';
     }
 }
