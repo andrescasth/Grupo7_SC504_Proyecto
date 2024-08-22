@@ -9,8 +9,11 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
 
 @Repository
 public class SucursalDao {
@@ -20,6 +23,15 @@ public class SucursalDao {
     @Autowired
     public SucursalDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+    public List<Sucursal> obtenerSucursales() {
+        String sql = "SELECT id_sucursal, nombre FROM sucursal";
+        return jdbcTemplate.query(sql, new RowMapper<Sucursal>() {
+            @Override
+            public Sucursal mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return new Sucursal(rs.getLong("id_sucursal"), rs.getString("nombre"));
+            }
+        });
     }
 
     public String insertarSucursal(Sucursal sucursal) {

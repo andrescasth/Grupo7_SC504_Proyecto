@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Eliminar Producto</title>
+</head>
+<body>
+    <h1>Eliminar Producto</h1>
+    <form action="/productos/eliminar" method="post">
+        <label for="id">ID del Producto:</label>
+        <input type="text" id="id" name="id" required><br><br>
+
+        <button type="submit">Eliminar Producto</button>
+    </form>
+    <a href="/productos/form">Volver</a>
+</body>
+</html>

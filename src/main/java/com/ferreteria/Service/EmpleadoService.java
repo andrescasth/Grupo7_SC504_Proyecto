@@ -1,7 +1,7 @@
 package com.ferreteria.service;
 
-import com.ferreteria.dao.EmpleadoDao;
 import com.ferreteria.domain.Empleado;
+import com.ferreteria.dao.EmpleadoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,11 @@ public class EmpleadoService {
         return empleadoDao.agregarEmpleado(empleado);
     }
 
-    public String eliminarEmpleado(int id) {
+    public String eliminarEmpleado(Long id) {
         return empleadoDao.eliminarEmpleado(id);
+    }
+
+    public String actualizarEmpleado(Empleado empleado) {
+        return empleadoDao.actualizarEmpleado(empleado);
     }
 }

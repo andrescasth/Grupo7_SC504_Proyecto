@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/marcas")
@@ -20,24 +22,19 @@ public class MarcaController {
     public MarcaController(MarcaService marcaService) {
         this.marcaService = marcaService;
     }
-    
+
     @GetMapping("/form")
     public String mostrarFormulario() {
         return "marcas/marcas"; // Página principal con botones
     }
-
-    @GetMapping
-    public String mostrarPaginaMarcas() {
-        return "marcas"; // Página con los botones para operaciones de marca
-    }
-
+    
     @GetMapping("/insertar")
-    public String mostrarFormularioInsertar() {
-        return "marcas/insertar"; // Página para insertar marca
+    public String mostrarFormularioAgregar() {
+        return "marcas/insertar"; // Página para agregar una nueva marca
     }
 
     @PostMapping("/insertar")
-    public String insertarMarca(@RequestParam String nombre, @RequestParam String descripcion, Model model) {
+    public String agregarMarca(@RequestParam String nombre, @RequestParam String descripcion, Model model) {
         Marca marca = new Marca(nombre, descripcion);
         String resultado = marcaService.agregarMarca(marca);
         model.addAttribute("resultado", resultado);
@@ -46,25 +43,29 @@ public class MarcaController {
 
     @GetMapping("/eliminar")
     public String mostrarFormularioEliminar() {
-        return "marcas/eliminar"; // Página para eliminar marca
+        return "marcas/eliminar"; // Página para eliminar una marca
     }
 
     @PostMapping("/eliminar")
-    public String eliminarMarca(@RequestParam int id, Model model) {
+    public String eliminarMarca(@RequestParam Long id, Model model) {
         String resultado = marcaService.eliminarMarca(id);
         model.addAttribute("resultado", resultado);
         return "marcas/resultado"; // Página de resultado
     }
 
     @GetMapping("/actualizar")
-    public String mostrarFormularioActualizar() {
-        return "marcas/actualizar"; // Página para actualizar marca
+    public String mostrarFormularioActualizar(Model model) {
+        model.addAttribute("marcas", marcaService.obtenerMarcas()); // Enviar la lista de marcas al modelo para el dropdown
+        return "marcas/actualizar"; // Página para actualizar una marca
     }
 
     @PostMapping("/actualizar")
-    public String actualizarMarca(@RequestParam Long id, @RequestParam String nombre, @RequestParam String descripcion, Model model) {
+    public String actualizarMarca(@RequestParam Long id,
+                                  @RequestParam String nombre,
+                                  @RequestParam String descripcion,
+                                  Model model) {
         Marca marca = new Marca(nombre, descripcion);
-        marca.setIdMarca(id);
+        marca.setId(id); // Establecer el ID de la marca
         String resultado = marcaService.actualizarMarca(marca);
         model.addAttribute("resultado", resultado);
         return "marcas/resultado"; // Página de resultado

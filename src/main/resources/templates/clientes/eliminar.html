@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Eliminar Cliente</title>
+</head>
+<body>
+    <h1>Eliminar Cliente</h1>
+    <form action="/clientes/eliminar" method="post">
+        <label for="id">ID de Cliente:</label>
+        <input type="number" id="id" name="id" required>
+        <br>
+        <button type="submit">Eliminar Cliente</button>
+    </form>
+</body>
+</html>

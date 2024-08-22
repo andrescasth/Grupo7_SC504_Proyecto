@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Agregar Producto</title>
+</head>
+<body>
+    <h1>Agregar Producto</h1>
+    <form action="/producto/actualizar" method="post">
+        <!-- Campo de nombre -->
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" th:value="${producto.nombre}" required>
+        <br>
+
+        <!-- Campo de descripción -->
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" th:value="${producto.descripcion}">
+        <br>
+
+        <!-- Campo de precio -->
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" step="0.01" th:value="${producto.precio}" required>
+        <br>
+
+        <!-- Campo de stock -->
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" th:value="${producto.stock}" required>
+        <br>
+
+        <!-- Dropdown para categorías -->
+        <label for="idCategoria">Categoría:</label>
+        <select id="idCategoria" name="idCategoria" required>
+            <option value="" disabled selected>Seleccione una categoría</option>
+            <option th:each="categoria : ${categorias}"
+                    th:value="${categoria.id}"
+                    th:text="${categoria.nombre}"></option>
+        </select>
+        <br>
+
+        <!-- Dropdown para marcas -->
+        <label for="idMarca">Marca:</label>
+        <select id="idMarca" name="idMarca" required>
+            <option value="" disabled selected>Seleccione una marca</option>
+            <option th:each="marca : ${marcas}"
+                    th:value="${marca.id}"
+                    th:text="${marca.nombre}"></option>
+        </select>
+        <br>
+
+        <!-- Campo de estado -->
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" name="estado" th:value="${producto.estado}" required>
+        <br>
+
+        <button type="submit">Guardar Producto</button>
+    </form>
+</body>
+</html>

@@ -9,35 +9,37 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Marca")
+@Table(name = "marca")
 public class Marca {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "marca_seq")
     @SequenceGenerator(name = "marca_seq", sequenceName = "marca_seq", allocationSize = 1)
-    @Column(name = "ID_Marca")
-    private Long idMarca;
+    @Column(name = "id_marca")
+    private Long id;
 
-    @Column(name = "Nombre", nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
-
-    @Column(name = "Descripcion", nullable = false)
+    
+     @Column(name = "descripcion")
     private String descripcion;
 
+    // Constructor vacío para JPA
     public Marca() {
     }
 
     public Marca(String nombre, String descripcion) {
         this.nombre = nombre;
-        this.descripcion = descripcion;
+         this.descripcion = descripcion;
     }
 
-    public Long getIdMarca() {
-        return idMarca;
+    // Getters y Setters
+    public Long getId() {
+        return id;
     }
 
-    public void setIdMarca(Long idMarca) {
-        this.idMarca = idMarca;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -47,19 +49,20 @@ public class Marca {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public String getDescripcion() {
+    
+     public String getDescripcion() {
         return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
+    }    
+        
 
     @Override
     public String toString() {
         return "Marca{" +
-                "idMarca=" + idMarca +
+                "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 '}';

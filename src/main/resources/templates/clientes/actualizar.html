@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Actualizar Cliente</title>
+</head>
+<body>
+    <h1>Actualizar Cliente</h1>
+    <form action="/clientes/actualizar" method="post">
+        <label for="id">ID de Cliente:</label>
+        <select id="id" name="id" required>
+            <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombre}"></option>
+        </select>
+        <br>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br>
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required>
+        <br>
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" required>
+        <br>
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" required>
+        <br>
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" name="estado" required>
+        <br>
+        <button type="submit">Actualizar Cliente</button>
+    </form>
+</body>
+</html>

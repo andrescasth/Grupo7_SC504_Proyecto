@@ -34,6 +34,11 @@ public class Sucursal {
     // Constructor vacío
     public Sucursal() {
     }
+    
+    public Sucursal(Long idSucursal, String nombre) {
+        this.idSucursal = idSucursal;
+        this.nombre = nombre;
+    }
 
     // Constructor con parámetros
     public Sucursal(String nombre, String direccion, String telefono, String estado) {

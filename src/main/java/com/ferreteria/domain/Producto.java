@@ -1,46 +1,65 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.ferreteria.domain;
 
-/**
- *
- * @author andre
- */
-public class Producto {
-    private int ID_producto;
-   private String nombre;
-   private  String descripcion;
-   private  int precio;
-   private  int stock;
-   private  int ID_categoria;
-   private  int ID_marca;
-   private  String Estado;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "producto")
+public class Producto {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "producto_seq")
+    @SequenceGenerator(name = "producto_seq", sequenceName = "producto_seq", allocationSize = 1)
+    @Column(name = "id_producto")
+    private Long idProducto;
+
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
+
+    @Column(name = "descripcion")
+    private String descripcion;
+
+    @Column(name = "precio", nullable = false)
+    private Double precio;
+
+    @Column(name = "stock", nullable = false)
+    private Integer stock;
+
+    @Column(name = "id_categoria", nullable = false)
+    private Long idCategoria; // Relación con Categoría
+
+    @Column(name = "id_marca", nullable = false)
+    private Long idMarca; // Relación con Marca
+
+    @Column(name = "estado", nullable = false)
+    private String estado;
+
+    // Constructor vacío para JPA
     public Producto() {
     }
-    
-    
-    
 
-    public Producto(int ID_producto, String nombre, String descripcion, int precio, int stock, int ID_categoria, int ID_marca, String Estado) {
-        this.ID_producto = ID_producto;
+    public Producto(String nombre, String descripcion, Double precio, Integer stock, Long idCategoria, Long idMarca, String estado) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;
-        this.ID_categoria = ID_categoria;
-        this.ID_marca = ID_marca;
-        this.Estado = Estado;
+        this.idCategoria = idCategoria;
+        this.idMarca = idMarca;
+        this.estado = estado;
     }
 
-    public int getID_producto() {
-        return ID_producto;
+    // Getters y Setters
+    public Long getIdProducto() {
+        return idProducto;
     }
 
-    public void setID_producto(int ID_producto) {
-        this.ID_producto = ID_producto;
+    public void setIdProducto(Long idProducto) {
+        this.idProducto = idProducto;
     }
 
     public String getNombre() {
@@ -59,53 +78,43 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public int getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
 
-    public void setStock(int stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
 
-    public int getID_categoria() {
-        return ID_categoria;
+    public Long getIdCategoria() {
+        return idCategoria;
     }
 
-    public void setID_categoria(int ID_categoria) {
-        this.ID_categoria = ID_categoria;
+    public void setIdCategoria(Long idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
-    public int getID_marca() {
-        return ID_marca;
+    public Long getIdMarca() {
+        return idMarca;
     }
 
-    public void setID_marca(int ID_marca) {
-        this.ID_marca = ID_marca;
+    public void setIdMarca(Long idMarca) {
+        this.idMarca = idMarca;
     }
 
     public String getEstado() {
-        return Estado;
+        return estado;
     }
 
-    public void setEstado(String Estado) {
-        this.Estado = Estado;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
-
-    @Override
-    public String toString() {
-        return "registro_producto{" + "ID_producto=" + ID_producto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", stock=" + stock + ", ID_categoria=" + ID_categoria + ", ID_marca=" + ID_marca + ", Estado=" + Estado + '}';
-    }
-    
-    
-    
-    
 }
-

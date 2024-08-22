@@ -16,17 +16,15 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categoria_seq")
     @SequenceGenerator(name = "categoria_seq", sequenceName = "categoria_seq", allocationSize = 1)
     @Column(name = "id_categoria")
-    private Long idCategoria;
+    private Long id;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Column(name = "descripcion", nullable = false)
+    @Column(name = "descripcion")
     private String descripcion;
 
-   
-    
-
+    // Constructor vacío para JPA
     public Categoria() {
     }
 
@@ -35,12 +33,13 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public Long getIdCategoria() {
-        return idCategoria;
+    // Getters y Setters
+    public Long getId() {
+        return id;
     }
 
-    public void setIdCategoria(Long idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -62,7 +61,7 @@ public class Categoria {
     @Override
     public String toString() {
         return "Categoria{" +
-                "idCategoria=" + idCategoria +
+                "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 '}';

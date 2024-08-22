@@ -1,6 +1,6 @@
 package com.ferreteria.service;
 
-import com.ferreteria.dao.MetodoPagoDAO;
+import com.ferreteria.dao.MetodoPagoDao;
 import com.ferreteria.domain.MetodoPago;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,10 +10,10 @@ import java.util.List;
 @Service
 public class MetodoPagoService {
 
-    private final MetodoPagoDAO metodoPagoDAO;
+    private final MetodoPagoDao metodoPagoDAO;
 
     @Autowired
-    public MetodoPagoService(MetodoPagoDAO metodoPagoDAO) {
+    public MetodoPagoService(MetodoPagoDao metodoPagoDAO) {
         this.metodoPagoDAO = metodoPagoDAO;
     }
 

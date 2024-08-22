@@ -7,8 +7,11 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
 
 @Repository
 public class PuestoDao {
@@ -18,6 +21,15 @@ public class PuestoDao {
     @Autowired
     public PuestoDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+    public List<Puesto> obtenerPuestos() {
+        String sql = "SELECT id_puesto, nombre FROM puesto";
+        return jdbcTemplate.query(sql, new RowMapper<Puesto>() {
+            @Override
+            public Puesto mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return new Puesto(rs.getLong("id_puesto"), rs.getString("nombre"));
+            }
+        });
     }
 
     public String agregarPuesto(Puesto puesto) {

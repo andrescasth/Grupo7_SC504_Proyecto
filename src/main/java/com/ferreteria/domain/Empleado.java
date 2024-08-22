@@ -1,45 +1,57 @@
 package com.ferreteria.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Empleado")
 public class Empleado {
-    private int idEmpleado;
-    private String nombre;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "empleado_seq")
+    @SequenceGenerator(name = "empleado_seq", sequenceName = "empleado_seq", allocationSize = 1)
+    @Column(name = "ID_Empleado")
+    private Long idEmpleado;
+
+    @Column(name = "Direccion", nullable = false)
     private String direccion;
-    private String telefono;
-    private String correo;
-    private int idSucursal;
-    private int idPuesto;
+
+    @Column(name = "Email", nullable = false)
+    private String email;
+
+    @Column(name = "ID_Sucursal", nullable = false)
+    private Long idSucursal;
+
+    @Column(name = "ID_Puesto", nullable = false)
+    private Long idPuesto;
+
+    @Column(name = "Estado", nullable = false)
     private String estado;
 
+    // Constructor vacío para JPA
     public Empleado() {
     }
 
-    public Empleado(int idEmpleado, String nombre, String direccion, String telefono, String correo, int idSucursal, int idPuesto, String estado) {
-        this.idEmpleado = idEmpleado;
-        this.nombre = nombre;
+    public Empleado(String direccion, String email, Long idSucursal, Long idPuesto, String estado) {
         this.direccion = direccion;
-        this.telefono = telefono;
-        this.correo = correo;
+        this.email = email;
         this.idSucursal = idSucursal;
         this.idPuesto = idPuesto;
         this.estado = estado;
     }
 
     // Getters y Setters
-
-    public int getIdEmpleado() {
+    public Long getIdEmpleado() {
         return idEmpleado;
     }
 
-    public void setIdEmpleado(int idEmpleado) {
+    public void setIdEmpleado(Long idEmpleado) {
         this.idEmpleado = idEmpleado;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getDireccion() {
@@ -50,35 +62,27 @@ public class Empleado {
         this.direccion = direccion;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public int getIdSucursal() {
+    public Long getIdSucursal() {
         return idSucursal;
     }
 
-    public void setIdSucursal(int idSucursal) {
+    public void setIdSucursal(Long idSucursal) {
         this.idSucursal = idSucursal;
     }
 
-    public int getIdPuesto() {
+    public Long getIdPuesto() {
         return idPuesto;
     }
 
-    public void setIdPuesto(int idPuesto) {
+    public void setIdPuesto(Long idPuesto) {
         this.idPuesto = idPuesto;
     }
 
@@ -94,10 +98,8 @@ public class Empleado {
     public String toString() {
         return "Empleado{" +
                 "idEmpleado=" + idEmpleado +
-                ", nombre='" + nombre + '\'' +
                 ", direccion='" + direccion + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", correo='" + correo + '\'' +
+                ", email='" + email + '\'' +
                 ", idSucursal=" + idSucursal +
                 ", idPuesto=" + idPuesto +
                 ", estado='" + estado + '\'' +

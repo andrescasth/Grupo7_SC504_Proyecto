@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Crear Cuenta</title>
+</head>
+<body>
+    <h1>Crear Cuenta</h1>
+    <form action="/cuentas/agregar" method="post">
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" name="usuario" required>
+        <br>
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required>
+        <br>
+        <label for="fechaCreacion">Fecha de Creación:</label>
+        <input type="date" id="fechaCreacion" name="fechaCreacion" required>
+        <br>
+        <label for="idCliente">Cliente:</label>
+        <select id="idCliente" name="idCliente" required>
+            <option value="">Selecciona un cliente</option>
+            <option th:each="cliente : ${clientes}"
+                    th:value="${cliente.id}"
+                    th:text="${cliente.nombre}"></option>
+        </select>
+        <br>
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" name="estado" required>
+        <br>
+        <button type="submit">Crear Cuenta</button>
+    </form>
+</body>
+</html>

@@ -3,6 +3,8 @@ package com.ferreteria.controller;
 import com.ferreteria.domain.MetodoPago;
 import com.ferreteria.service.MetodoPagoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -17,14 +21,16 @@ import java.util.List;
 public class MetodoPagoController {
 
     private final MetodoPagoService metodoPagoService;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public MetodoPagoController(MetodoPagoService metodoPagoService) {
+    public MetodoPagoController(MetodoPagoService metodoPagoService, JdbcTemplate jdbcTemplate) {
         this.metodoPagoService = metodoPagoService;
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @GetMapping("/form")
-    public String mostrarFormulario() {
+    public String mostrarFormulario(Model model) {
         return "metodosPago/metodosPago"; // Página principal con dropdown
     }
 
@@ -71,9 +77,7 @@ public class MetodoPagoController {
         String resultado = metodoPagoService.actualizarMetodoPago(metodoPago);
         model.addAttribute("resultado", resultado);
         return "metodosPago/resultado"; // Página de resultado
-        
-        
     }
-    
-    
-}
+
+    }
+

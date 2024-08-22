@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-
 @Entity
 @Table(name = "cliente")
 public class Cliente {
@@ -16,7 +15,7 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cliente_seq")
     @SequenceGenerator(name = "cliente_seq", sequenceName = "cliente_seq", allocationSize = 1)
-    @Column(name = "id")
+    @Column(name = "id_cliente") // Actualizado para usar id_cliente
     private Long id;
 
     @Column(name = "nombre", nullable = false)
@@ -33,9 +32,22 @@ public class Cliente {
 
     @Column(name = "estado", nullable = false)
     private String estado;
+
+    // Constructor sin parámetros
     public Cliente() {
     }
 
+    // Constructor con todos los parámetros
+    public Cliente(Long id, String nombre, String direccion, String telefono, String correo, String estado) {
+        this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.estado = estado;
+    }
+    
+    // Constructor con todos los parámetros
     public Cliente(String nombre, String direccion, String telefono, String correo, String estado) {
         this.nombre = nombre;
         this.direccion = direccion;
@@ -45,7 +57,6 @@ public class Cliente {
     }
 
     // Getters y Setters
-
     public Long getId() {
         return id;
     }

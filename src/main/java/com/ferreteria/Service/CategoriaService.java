@@ -5,6 +5,8 @@ import com.ferreteria.dao.CategoriaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoriaService {
 
@@ -15,11 +17,16 @@ public class CategoriaService {
         this.categoriaDao = categoriaDao;
     }
 
+    public List<Categoria> obtenerCategorias() {
+        return categoriaDao.obtenerCategorias();
+    }
+   
+
     public String agregarCategoria(Categoria categoria) {
         return categoriaDao.agregarCategoria(categoria);
     }
 
-    public String eliminarCategoria(int id) {
+    public String eliminarCategoria(Long id) {
         return categoriaDao.eliminarCategoria(id);
     }
 

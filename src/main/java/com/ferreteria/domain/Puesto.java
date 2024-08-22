@@ -29,6 +29,11 @@ public class Puesto {
 
     public Puesto() {
     }
+    
+    public Puesto(Long idPuesto, String nombre) {
+        this.idPuesto = idPuesto;
+        this.nombre = nombre;
+    }
 
     public Puesto(String nombre, Double salario, String estado) {
         this.nombre = nombre;

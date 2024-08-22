@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/categorias")
@@ -26,8 +27,16 @@ public class CategoriaController {
     }
 
     @GetMapping("/insertar")
-    public String mostrarFormularioInsertar() {
-        return "categorias/insertar"; // Página para insertar categoría
+    public String mostrarFormularioAgregar() {
+        return "categorias/insertar"; // Página para agregar una nueva categoría
+    }
+
+    @PostMapping("/insertar")
+    public String agregarCategoria(@RequestParam String nombre, @RequestParam String descripcion, Model model) {
+        Categoria categoria = new Categoria(nombre, descripcion);
+        String resultado = categoriaService.agregarCategoria(categoria);
+        model.addAttribute("resultado", resultado);
+        return "categorias/resultado"; // Página de resultado
     }
 
     @GetMapping("/eliminar")
@@ -35,33 +44,29 @@ public class CategoriaController {
         return "categorias/eliminar"; // Página para eliminar categoría
     }
 
+    @PostMapping("/eliminar")
+    public String eliminarCategoria(@RequestParam Long id, Model model) {
+        String resultado = categoriaService.eliminarCategoria(id);
+        model.addAttribute("resultado", resultado);
+        return "categorias/resultado"; // Página de resultado
+    }
+
     @GetMapping("/actualizar")
-    public String mostrarFormularioActualizar() {
+    public String mostrarFormularioActualizar(Model model) {
+        model.addAttribute("categorias", categoriaService.obtenerCategorias()); // Enviar la lista de categorías al modelo para el dropdown
         return "categorias/actualizar"; // Página para actualizar categoría
     }
 
-    @PostMapping("/agregar")
-    public String agregarCategoria(String nombre, String descripcion, Model model) {
-        Categoria categoria = new Categoria(nombre, descripcion);
-        String resultado = categoriaService.agregarCategoria(categoria);
-        model.addAttribute("resultado", resultado);
-        return "categorias/resultado"; // Página de resultado
-    }
-
-    @PostMapping("/eliminar")
-    public String eliminarCategoria(String id, Model model) {
-        int categoriaId = Integer.parseInt(id);
-        String resultado = categoriaService.eliminarCategoria(categoriaId);
-        model.addAttribute("resultado", resultado);
-        return "categorias/resultado"; // Página de resultado
-    }
-
     @PostMapping("/actualizar")
-    public String actualizarCategoria(String id, String nombre, String descripcion, Model model) {
-        Categoria categoria = new Categoria(nombre, descripcion);
-        categoria.setIdCategoria(Long.parseLong(id));
-        String resultado = categoriaService.actualizarCategoria(categoria);
-        model.addAttribute("resultado", resultado);
-        return "categorias/resultado"; // Página de resultado
-    }
+public String actualizarCategoria(@RequestParam Long id,
+                                  @RequestParam String nombre,
+                                  @RequestParam String descripcion,
+                                  Model model) {
+    Categoria categoria = new Categoria(nombre, descripcion);
+    categoria.setId(id); // Establecer el ID de la categoría
+    String resultado = categoriaService.actualizarCategoria(categoria);
+    model.addAttribute("resultado", resultado);
+    return "categorias/resultado"; // Página de resultado
+}
+
 }

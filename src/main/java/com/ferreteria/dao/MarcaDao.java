@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class MarcaDao {
@@ -18,16 +19,26 @@ public class MarcaDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    public List<Marca> obtenerMarcas() {
+        String sql = "SELECT id_marca, nombre, descripcion FROM grupo7.Marca";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> {
+            Marca marca = new Marca();
+            marca.setId(rs.getLong("id_marca"));
+            marca.setNombre(rs.getString("nombre"));
+            marca.setDescripcion(rs.getString("descripcion"));
+            return marca;
+        });
+    }
+
     public String agregarMarca(Marca marca) {
         String mensaje = "";
-        String sql = "{call GRUPO7.Insertar_Marca_sp(?, ?)}"; // Cambia a PROYECTO
+        String sql = "{call GRUPO7.Insertar_Marca_sp(?,?)}";
 
         try (Connection con = jdbcTemplate.getDataSource().getConnection();
              CallableStatement cstmt = con.prepareCall(sql)) {
 
             cstmt.setString(1, marca.getNombre());
             cstmt.setString(2, marca.getDescripcion());
-
             cstmt.execute();
 
         } catch (SQLException e) {
@@ -37,15 +48,14 @@ public class MarcaDao {
         return mensaje;
     }
 
-    public String eliminarMarca(int id) {
+    public String eliminarMarca(Long id) {
         String mensaje = "";
-        String sql = "{call GRUPO7.Eliminar_Marca_sp(?)}"; // Cambia a PROYECTO
+        String sql = "{call GRUPO7.Eliminar_Marca_sp(?)}";
 
         try (Connection con = jdbcTemplate.getDataSource().getConnection();
              CallableStatement cstmt = con.prepareCall(sql)) {
 
-            cstmt.setInt(1, id);
-
+            cstmt.setLong(1, id);
             cstmt.execute();
 
         } catch (SQLException e) {
@@ -57,15 +67,14 @@ public class MarcaDao {
 
     public String actualizarMarca(Marca marca) {
         String mensaje = "";
-        String sql = "{call GRUPO7.Actualizar_Marca_sp(?, ?, ?)}"; // Cambia a PROYECTO
+        String sql = "{call GRUPO7.Actualizar_Marca_sp(?, ?, ?)}";
 
         try (Connection con = jdbcTemplate.getDataSource().getConnection();
              CallableStatement cstmt = con.prepareCall(sql)) {
 
-            cstmt.setLong(1, marca.getIdMarca());
+            cstmt.setLong(1, marca.getId());
             cstmt.setString(2, marca.getNombre());
             cstmt.setString(3, marca.getDescripcion());
-
             cstmt.execute();
 
         } catch (SQLException e) {

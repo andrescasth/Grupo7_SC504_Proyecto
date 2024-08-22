@@ -3,6 +3,7 @@ package com.ferreteria.service;
 
 import com.ferreteria.dao.SucursalDao;
 import com.ferreteria.domain.Sucursal;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +27,8 @@ public class SucursalService {
 
     public String actualizarSucursal(Sucursal sucursal) {
         return sucursalDao.actualizarSucursal(sucursal);
+    }
+     public List<Sucursal> obtenerSucursales() {
+        return sucursalDao.obtenerSucursales();
     }
 }
